@@ -1,21 +1,24 @@
 7/02/2026 1:51 PM
 ⸻
+
 TenantSage is a governed knowledge architecture that embeds organisational trust, tenant isolation, 
 and access governance directly into the data model and retrieval process, 
 ensuring that AI systems operate exclusively within verified, authorised, and compliant knowledge boundaries.
 ⸻
+
 TenantSage is a governed, multi-tenant Retrieval-Augmented Generation (RAG) architecture designed for compliance-critical environments.
 At its core, TenantSage implements the TenantSage Real-Time Inheritance Retrieval Path™, a deterministic retrieval mechanism that enforces governance, 
 visibility, and compliance before any AI generation occurs.
 TenantSage is not a generic RAG system; it is a governance-first knowledge system where data access, scope, 
 and authority are resolved at query time through enforced inheritance rules.
 ⸻
+
 TenantSage Real-Time Inheritance Retrieval Path
 A governed retrieval mechanism in which vector similarity, role visibility, temporal validity, legal hold status, 
 and override precedence are evaluated simultaneously via parent-source inheritance during query execution.
-This retrieval path ensures that no content can be surfaced, ranked, or generated unless it satisfies all applicable governance constraints inherited 
-from its authoritative parent source.
+This retrieval path ensures that no content can be surfaced, ranked, or generated unless it satisfies all applicable governance constraints inherited from its authoritative parent source.
 ⸻
+
 Architectural Rationale: Real-Time Inheritance by Design
 TenantSage was intentionally designed to avoid common denormalized permission models used in traditional databases and RAG systems.
 
