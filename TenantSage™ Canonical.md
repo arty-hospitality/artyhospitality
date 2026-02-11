@@ -1,23 +1,22 @@
 7/02/2026 1:51 PM
 ⸻
-TenantSage™
-TenantSage™ is a governed knowledge architecture that embeds organisational trust, tenant isolation, 
+TenantSage is a governed knowledge architecture that embeds organisational trust, tenant isolation, 
 and access governance directly into the data model and retrieval process, 
 ensuring that AI systems operate exclusively within verified, authorised, and compliant knowledge boundaries.
 ⸻
-TenantSage™ is a governed, multi-tenant Retrieval-Augmented Generation (RAG) architecture designed for compliance-critical environments.
+TenantSage is a governed, multi-tenant Retrieval-Augmented Generation (RAG) architecture designed for compliance-critical environments.
 At its core, TenantSage implements the TenantSage Real-Time Inheritance Retrieval Path™, a deterministic retrieval mechanism that enforces governance, 
 visibility, and compliance before any AI generation occurs.
 TenantSage is not a generic RAG system; it is a governance-first knowledge system where data access, scope, 
 and authority are resolved at query time through enforced inheritance rules.
 ⸻
-TenantSage Real-Time Inheritance Retrieval Path™
+TenantSage Real-Time Inheritance Retrieval Path
 A governed retrieval mechanism in which vector similarity, role visibility, temporal validity, legal hold status, 
 and override precedence are evaluated simultaneously via parent-source inheritance during query execution.
 This retrieval path ensures that no content can be surfaced, ranked, or generated unless it satisfies all applicable governance constraints inherited 
 from its authoritative parent source.
 ⸻
-Architectural Rationale: Real-Time Inheritance™ by Design
+Architectural Rationale: Real-Time Inheritance by Design
 TenantSage was intentionally designed to avoid common denormalized permission models used in traditional databases and RAG systems.
 
 Design Choice 1: Governance at the Parent Source
@@ -50,21 +49,21 @@ Property-specific overrides are permitted only through explicit whitelist author
 This avoids silent policy drift and ensures that local exceptions cannot override corporate governance unless explicitly approved.
 ⸻
 Result:
-TenantSage™ expresses governance not as configuration, but as structure.
+TenantSage expresses governance not as configuration, but as structure.
 This structure — schema + retrieval path — constitutes an original selection and arrangement designed to solve real-time compliance inheritance.
 ⸻
-TenantSage™ Governance Integrity Clause
-The Software includes the TenantSage Real-Time Inheritance Retrieval Path™, which constitutes a material and inseparable component of the system.
+TenantSage Governance Integrity Clause
+The Software includes the TenantSage Real-Time Inheritance Retrieval Path, which constitutes a material and inseparable component of the system.
 Licensee agrees that:
-1. The Real-Time Inheritance Retrieval Path™ shall not be removed, bypassed, decoupled, or materially altered.
+1. The Real-Time Inheritance Retrieval Path shall not be removed, bypassed, decoupled, or materially altered.
 2. Governance metadata defined at the parent-source level must remain functionally linked to retrieval execution.
 3. Any modification that disables or weakens legal hold enforcement, temporal validity checks, role visibility resolution, 
 or override precedence constitutes a material breach of this Agreement.
 4. Removal or alteration of ownership notices or architectural attribution voids all warranties, certifications, and indemnities.
 This clause survives termination.
 ⸻
-TenantSage Certified™ Requirements
-A system may be described as TenantSage Certified™ only if all conditions below are met.
+TenantSage Certified Requirements
+A system may be described as TenantSage Certified only if all conditions below are met.
 Governance & Inheritance
 • Governance metadata is stored at the authoritative parent source
 • All child content inherits governance at query time
