@@ -1,21 +1,21 @@
 HEAD
 # artyhospitality
- TenantSage™, the Family-Tenant Model™, and the governed retrieval architecture are original architectural works authored by Arthit Pukhampuang.
+ TenantSage, the Family-Tenant Model, and the governed retrieval architecture are original architectural works authored by Arthit Pukhampuang.
 =======
-# TenantSage™ — The Architecture of Trust
+# TenantSage — The Architecture of Trust
 
-TenantSage™ is a governed knowledge architecture designed for complex,
+TenantSage is a governed knowledge architecture designed for complex,
 multi-property and multi-branch organisations where trust, isolation,
 and compliance are non-negotiable.
 
 This repository hosts the **public static site** describing the
-TenantSage™ architectural framework.
+TenantSage architectural framework.
 
 ---
 
-## What TenantSage™ Is
+## What TenantSage Is
 
-TenantSage™ is **not** a chatbot, AI model, or RAG tool.
+TenantSage is **not** a chatbot, AI model, or RAG tool.
 
 It is an architectural framework that embeds organisational trust,
 tenant isolation, and access governance directly into the data model
@@ -43,9 +43,9 @@ under Australian copyright law.
 
 ## Intellectual Property
 
-© 2026 Arthit Pukhampuang. All rights reserved.
+© 2025-2026 Arthit Pukhampuang. All rights reserved.
 
-TenantSage™, the Family-Tenant Model™, and the governed retrieval
+TenantSage, the Family-Tenant Model, and the governed retrieval
 architecture are original architectural works authored by
 Arthit Pukhampuang.
 
