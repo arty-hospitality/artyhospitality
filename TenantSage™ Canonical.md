@@ -55,34 +55,6 @@ Result:
 TenantSage expresses governance not as configuration, but as structure.
 This structure — schema + retrieval path — constitutes an original selection and arrangement designed to solve real-time compliance inheritance.
 
-TenantSage Governance Integrity Clause
-The Software includes the TenantSage Real-Time Inheritance Retrieval Path, which constitutes a material and inseparable component of the system.
-Licensee agrees that:
-1. The Real-Time Inheritance Retrieval Path shall not be removed, bypassed, decoupled, or materially altered.
-2. Governance metadata defined at the parent-source level must remain functionally linked to retrieval execution.
-3. Any modification that disables or weakens legal hold enforcement, temporal validity checks, role visibility resolution, 
-or override precedence constitutes a material breach of this Agreement.
-4. Removal or alteration of ownership notices or architectural attribution voids all warranties, certifications, and indemnities.
-This clause survives termination.
 
-TenantSage Certified Requirements
-A system may be described as TenantSage Certified only if all conditions below are met.
-Governance & Inheritance
-• Governance metadata is stored at the authoritative parent source
-• All child content inherits governance at query time
-• Legal holds suppress all derived vectors immediately
-• Temporal validity is enforced during retrieval
-Retrieval Integrity
-• Vector similarity is evaluated after governance checks
-• No post-retrieval filtering is used to enforce access
-• Role visibility is resolved before ranking
-• Overrides are whitelist-based and auditable
-Tenant Isolation
-• Family-level isolation is enforced structurally
-• Cross-tenant retrieval is impossible by design
-• Property-specific overrides cannot escape family scope
-AI Safety
-• AI models never receive unauthorized context
-• Expired or restricted content is never embedded into prompts
-• Retrieval logs support audit and incident review
+
 
