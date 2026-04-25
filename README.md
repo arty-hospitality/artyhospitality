@@ -1,6 +1,5 @@
 HEAD
-# artyhospitality
- TenantSage, the Family-Tenant Model, and the governed retrieval architecture are original architectural works authored by Arthit Pukhampuang.
+# TenantSage, the Family-Tenant Model, and the governed retrieval architecture are original architectural works authored by Arthit Pukhampuang.
 =======
 # TenantSage — The Architecture of Trust
 
@@ -54,10 +53,17 @@ without prior written permission, except as permitted under the
 Copyright Act 1968 (Cth).
 
 ---
+---
+
+## About Family‑Tenant (TenantSage)
+**Family‑Tenant** is **TenantSage’s** canonical multi‑tenant architecture pattern (Family → Child).
+
+**Related repositories**
+- Family‑Tenant architecture notes/whitepaper: https://github.com/arty-hospitality/Family_Tenant_Architecture
 
 ## Website
 
-- Homepage: `index.html`
+- Homepage: `https://tenantsage.io`
 - Product overview: `tenant-sage.html`
 - Legal & IP notice: `legal.html`
 >>>>>>> db3b053 (Initial static site)
