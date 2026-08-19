@@ -1,4 +1,3 @@
-HEAD
 TenantSage — What it actually is
 
 TenantSage is a Governance Execution Platform and Authority Control Plane for AI.
