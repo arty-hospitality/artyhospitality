@@ -1,0 +1,411 @@
+19 August 2026
+
+TenantSage™ — Current Architectural Definition
+
+TenantSage™ is a Governance Execution Platform and Authority Control Plane for enterprise AI.
+
+TenantSage determines and proves whether an AI system is permitted to access evidence, use that evidence, generate from it, disclose the resulting output, or execute a downstream action.
+
+Its governing principle is:
+
+No proven authority → no retrieval.
+
+TenantSage does not rely on the application, vector database, model, prompt, or retrieval engine to determine governance independently. Authority and governance are established before retrieval, and every downstream stage remains bound to the resulting proof chain.
+
+⸻
+
+Canonical Architecture
+
+TenantSage operates through the following canonical control sequence:
+
+S0 Request Ingress → S1 Deterministic Authority Resolution (DAR) → S2 Governance Decision → S3 Eligible Evidence Boundary (EEB) → S4 Governed Retrieval / TrustRAG → S5 Governed Context → Durable Write-Ahead Proof → S6 Generation → S7 Validation and Approval → S8 Authorized Execution / Disclosure → Replay and Evidence Reconstruction
+
+S0 — Request Ingress
+
+TenantSage receives a verified request context and binds the request to:
+
+* principal identity
+* active scope
+* requested action
+* purpose
+* environment
+* query or payload commitment
+
+An unverified identity or invalid ingress context cannot progress into the governed pipeline.
+
+S1 — Deterministic Authority Resolution (DAR)
+
+DAR determines what authority the principal actually possesses at the time of the request.
+
+The resulting AuthoritySnapshot binds:
+
+* customer
+* principal
+* active scope
+* assignment
+* role
+* effective authority window
+* authority state
+* canonical authority proof
+
+DAR resolves authority. It does not independently decide what evidence may be retrieved.
+
+S2 — Governance Decision
+
+TenantSage evaluates whether the resolved authority may be exercised for the requested action and purpose.
+
+Governance evaluation may include:
+
+* action
+* purpose
+* environment
+* policy state
+* classification ceiling
+* source-type restrictions
+* topic restrictions
+* retention conditions
+* legal-hold conditions
+* approval requirements
+* explicit deny precedence
+
+The result is a deterministic ALLOW or DENY decision bound to the authority state and applicable policy state.
+
+S3 — Eligible Evidence Boundary
+
+When governance permits the request, TenantSage constructs and seals the Eligible Evidence Boundary.
+
+The EEB defines the only evidence universe that retrieval is permitted to inspect.
+
+It binds:
+
+* authority proof
+* policy proof
+* governance proof
+* customer and active scope
+* eligible source identifiers
+* eligible scopes
+* eligible source types
+* eligible topic keys
+* classification limits
+* retention requirements
+* legal-hold requirements
+* approval requirements
+* validity period
+* canonical boundary hash
+
+The EEB must exist before retrieval begins.
+
+S4 — Governed Retrieval / TrustRAG
+
+Retrieval executes only inside the sealed EEB.
+
+The fundamental retrieval invariant is:
+
+Retrieved Evidence ⊆ Sealed Eligible Evidence Boundary
+
+Retrieval cannot create new authority, broaden eligibility, or bypass the EEB.
+
+A retrieval operation produces a durable receipt binding:
+
+* request
+* customer
+* EEB
+* query
+* retrieval profile
+* ordered evidence references
+* retrieval outcome
+* retrieval integrity proof
+
+Rejected, abandoned, or failed retrieval operations remain terminal and cannot produce governed context.
+
+Source-Derived Chunk Eligibility
+
+Vector chunks possess no independent authority.
+
+Authority is anchored at the governed source boundary.
+
+Chunk eligibility is derived from the current authoritative state of the source at retrieval time.
+
+Source governance may include:
+
+* customer binding
+* scope binding
+* classification
+* legal hold
+* retention
+* effective-from and effective-to conditions
+* publication status
+* source type
+* topic key
+* integrity proof
+
+This allows governance changes at the source level to affect all derived chunks without requiring permission state to be duplicated into every vector record.
+
+This runtime inheritance behaviour is the current evolution of the earlier TenantSage Real-Time Inheritance Retrieval Path™ and Ghost Effect mechanism.
+
+S5 — Governed Context
+
+Retrieved evidence is not automatically permitted to enter the model context.
+
+TenantSage verifies:
+
+* retrieval receipt integrity
+* EEB integrity
+* authority binding
+* governance binding
+* customer binding
+* query binding
+* retrieval-profile binding
+* evidence sequence
+* evidence integrity
+* authority freshness
+* policy freshness
+* provenance
+
+Only verified evidence is admitted into the Governed Context.
+
+Durable Write-Ahead Proof
+
+Before generation, TenantSage requires durable proof that the governed context and its upstream lineage have been committed.
+
+The governing rule is:
+
+No durable context proof → no generation.
+
+TenantSage therefore does not rely on generating first and auditing afterwards.
+
+S6 — Generation
+
+AI generation receives only governed context.
+
+Generation is bound to:
+
+* governed context
+* durable pre-generation proof
+* model provider
+* model version
+* model configuration
+* prompt template
+* rendered prompt
+* candidate output
+* generation provenance
+
+TenantSage does not treat generation as a new authority boundary.
+
+The model cannot expand evidence eligibility or create permissions that were not established upstream.
+
+S7 — Validation and Approval
+
+Generated output is evaluated against the complete upstream lineage.
+
+TenantSage validates:
+
+* candidate integrity
+* context binding
+* governance binding
+* evidence lineage
+* disclosure rules
+* classification constraints
+* action permissions
+* provenance requirements
+* tool or action arguments
+* approval requirements
+
+A ValidatedAction describes executable meaning but carries no execution authority by itself.
+
+Only a ValidationApproval may authorize progression into S8.
+
+ValidationApproval binds:
+
+* S1–S6 proof lineage
+* validation policy
+* validation rules
+* exact validated action
+* validity window
+* canonical validation proof
+
+S8 — Authorized Execution and Disclosure
+
+Execution is separately governed from generation and validation.
+
+The canonical execution sequence is:
+
+ValidationApproval → ExecutionIntent → Durable Intent Proof → Exact Approved Execution → CompletedExecutionReceipt → Durable Completion Proof → Final ExecutionReceipt → Replay Proof → Response Release
+
+Execution requires exact binding to:
+
+* request
+* operation
+* customer
+* principal
+* active scope
+* validation approval
+* action
+* target system
+* idempotency key
+* approved execution material
+* durable intent proof
+* durable completion proof
+
+No successful execution claim or response release is permitted without the required durable evidence.
+
+⸻
+
+Evidence and Proof Plane
+
+TenantSage maintains a cross-cutting evidence and proof plane across the entire architecture.
+
+The proof chain may include:
+
+* request proof
+* authority proof
+* policy proof
+* governance decision proof
+* EEB proof
+* retrieval admission and receipt
+* terminal retrieval evidence
+* governed-context proof
+* durable write-ahead proof
+* generation provenance
+* validation approval
+* execution intent
+* execution completion
+* denial evidence
+* failure evidence
+* replay evidence
+
+The purpose of this plane is not merely logging.
+
+Its purpose is to support:
+
+* audit reconstruction
+* deterministic verification
+* evidence lineage
+* provenance
+* integrity checking
+* denial reconstruction
+* failure reconstruction
+* replay
+* release gating
+
+⸻
+
+Database-Enforced Isolation
+
+TenantSage treats customerId as the hard isolation boundary.
+
+The application layer is not the sole protection against cross-customer access.
+
+The architecture uses defence in depth through mechanisms such as:
+
+* customer-bound data relationships
+* hierarchical authority scope
+* source-bound chunk lineage
+* database constraints
+* row-level security
+* forced row-level security
+* non-owner runtime roles
+* prohibition of BYPASSRLS
+* controlled database execution context
+* append-only evidence controls
+
+The intended security property is:
+
+A cross-customer mistake should be rejected below the application decision layer, not merely avoided by application convention.
+
+⸻
+
+Governed Source Admission
+
+TenantSage is not required to own an organisation’s ingestion platform.
+
+Existing repositories, RAG systems, vector infrastructure, and source platforms may remain in place.
+
+TenantSage instead governs the admission of sources into the governed evidence model by binding source metadata and authority before those sources become eligible for retrieval.
+
+Therefore TenantSage can integrate with customer-controlled retrieval infrastructure without becoming a document-management or ingestion platform.
+
+⸻
+
+Architectural Invariants
+
+The current TenantSage architecture is governed by the following invariants:
+
+No Verified Identity → No Authority
+
+No Proven Authority → No Governance Allow
+
+No Governance Allow → No EEB
+
+No Sealed EEB → No Retrieval
+
+Retrieved Evidence ⊆ Sealed EEB
+
+No Verified Retrieval Proof → No Governed Context
+
+No Governed Context → No Generation
+
+No Durable Context Proof → No Generation
+
+No Verified S1–S6 Lineage → No ValidationApproval
+
+No ValidationApproval → No ExecutionIntent
+
+No Durable Intent Proof → No Execution
+
+No Durable Completion Proof → No Successful Execution Claim
+
+No Replay Proof → No Response Release
+
+⸻
+
+What TenantSage Is
+
+TenantSage is:
+
+* a Governance Execution Platform
+* an Authority Control Plane
+* a pre-retrieval governance boundary
+* a governed retrieval control architecture
+* an evidence and proof system
+* a decision-lineage system
+* an execution-authority control system
+* a replay and audit-reconstruction architecture
+
+⸻
+
+What TenantSage Is Not
+
+TenantSage is not:
+
+* a chatbot
+* a foundation model
+* a vector database
+* a generic search engine
+* a prompt framework
+* an IAM replacement
+* a document-management system
+* a generic ingestion platform
+* a conventional RAG application
+
+TenantSage consumes and governs those systems rather than attempting to replace them.
+
+⸻
+
+Current Product Definition
+
+TenantSage™ is a Governance Execution Platform that establishes provable authority before evidence access, deterministically constrains retrieval to a sealed Eligible Evidence Boundary, preserves evidence and decision lineage through generation and validation, governs downstream execution through explicit approval, and requires durable replayable proof before consequential output or action is released.
+
+In plain language:
+
+TenantSage is the Immigration, Customs, and Controlled Border for enterprise AI. It verifies who AI represents, determines where it may go, controls what evidence may cross the boundary, and records proof of what was allowed, denied, generated, and executed.
+
+The operating principle remains:
+
+Authority before retrieval. Evidence before generation. Approval before execution. Proof before release.
+
+⸻
+
+© 2026 Arthit Pukhampuang. All rights reserved.
+
+TenantSage™ and the associated architectural materials originated from the earlier governance-before-retrieval work and subsequently evolved from the Retention Family-Tenant Governed RAG Architecture and TenantSage Real-Time Inheritance Retrieval Path™ into the current TenantSage Governance Execution and Authority Control architecture.
