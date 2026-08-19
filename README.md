@@ -1,10 +1,12 @@
-TenantSage — What it actually is
+TenantSage 
+
+What it actually is:
 
 TenantSage is a Governance Execution Platform and Authority Control Plane for AI.
 
 Works authored by Arthit Pukhampuang.
 
-It sits between users/agents and enterprise data, AI models, and external actions. Its job is not to be the chatbot, vector database, identity provider, or LLM. Its job is to determine—and prove—what an AI operation is permitted to access, infer, disclose, and execute before those operations occur.
+It sits between users/agents and enterprise data, AI models, and external actions. Its job is not to be the chatbot, vector database, identity provider, or LLM. Its job is to determine and prove what an AI operation is permitted to access, infer, disclose, and execute before those operations occur.
 
 The central idea is:
 
